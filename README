@@ -1,0 +1,27 @@
+
+This fork was made to prepare app to work on repo build system
+
+Actually it is not fully working in a repo (require vlc compilation),
+but can help to include VLC in the AOSP system image.
+
+So, to compile libvlc jni library :
+
+export ANDROID_NDK=/<your NDK path>
+export ANDROID_SDK=/<your SDK path>
+
+then Execute :
+
+  ./install.sh
+
+finally, execute "mm" or include VLC package to the device.mk
+
+-------------------------------------------------------------
+
+For the installable VLC-debug.apk :
+
+you need ant 1.8 and Android SDK (android-sdk-linux_x86)
+
+  aptitude install ant ant-optional
+
+For the repo system apk (without jni lib), just type "mm"
+
