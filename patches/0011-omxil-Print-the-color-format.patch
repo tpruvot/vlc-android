@@ -1,0 +1,24 @@
+From d1453c39c11b1a21e7297bb57d9f05b55cec03fb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Storsj=C3=B6?= <martin@martin.st>
+Date: Fri, 23 Sep 2011 17:37:52 +0300
+Subject: [PATCH 11/11] omxil: Print the color format
+
+---
+ modules/codec/omxil/omxil.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/modules/codec/omxil/omxil.c b/modules/codec/omxil/omxil.c
+index f97129f..7747b66 100644
+--- a/modules/codec/omxil/omxil.c
++++ b/modules/codec/omxil/omxil.c
+@@ -408,6 +408,7 @@ static OMX_ERRORTYPE GetPortDefinition(decoder_t *p_dec, OmxPort *p_port,
+         p_fmt->video.i_visible_height = def->format.video.nFrameHeight;
+         p_fmt->video.i_frame_rate = p_dec->fmt_in.video.i_frame_rate;
+         p_fmt->video.i_frame_rate_base = p_dec->fmt_in.video.i_frame_rate_base;
++        msg_Dbg(p_dec, "OMX color format %x", def->format.video.eColorFormat );
+ 
+         /* Hack: Nexus One (stock firmware with binary OMX driver blob)
+          * claims to output 420Planar even though it in in practice is
+-- 
+1.7.2.5
+
