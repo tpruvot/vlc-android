@@ -1,0 +1,28 @@
+From 9c7fe4ea7fb84018855d4d67b33c4beba090c237 Mon Sep 17 00:00:00 2001
+From: tanguy.pruvot@gmail.com <tanguy.pruvot@gmail.com>
+Date: Thu, 22 Sep 2011 06:08:58 +0200
+Subject: [PATCH 8/9] Replace posix_memalign by new vlc_memalign (to fix compilation)
+
+---
+ modules/access/v4l2/video.c |    5 +++--
+ 1 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/modules/access/v4l2/video.c b/modules/access/v4l2/video.c
+index ad7d6c8..867cd9c 100644
+--- a/modules/access/v4l2/video.c
++++ b/modules/access/v4l2/video.c
+@@ -700,8 +700,9 @@ static int InitUserP( vlc_object_t *p_demux, demux_sys_t *p_sys, int i_fd, unsig
+     for( p_sys->i_nbuffers = 0; p_sys->i_nbuffers < 4; ++p_sys->i_nbuffers )
+     {
+         p_sys->p_buffers[p_sys->i_nbuffers].length = i_buffer_size;
+-        if( posix_memalign( &p_sys->p_buffers[p_sys->i_nbuffers].start,
+-                /* boundary */ i_page_size, i_buffer_size ) )
++        p_sys->p_buffers[p_sys->i_nbuffers].start = vlc_memalign(
++                /* boundary */ i_page_size, i_buffer_size );
++        if( p_sys->p_buffers[p_sys->i_nbuffers].start == NULL )
+             return -1;
+     }
+ 
+-- 
+1.7.2.5
+
