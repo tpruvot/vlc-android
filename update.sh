@@ -95,3 +95,6 @@ if [ -f vlc-android/bin/VLC-debug.apk ]; then
   cp -f vlc-android/bin/VLC-debug.apk VLC-$VERSION.apk
 fi
 
+# cleanup build info
+git checkout vlc-android/res/values/
+

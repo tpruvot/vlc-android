@@ -63,7 +63,8 @@ $GIT am ../patches/*.patch
 ERR=$?
 if [ $ERR -eq 1 ] ; then
     $GIT am --abort
-    echo; echo "Patches needs to be rebased !"
+    echo
+    echo "Patches needs to be rebased !"
     exit 1
 fi
 
@@ -99,4 +100,7 @@ VERSION=`cd $VLC && git describe`
 if [ -f vlc-android/bin/VLC-debug.apk ]; then
   cp -f vlc-android/bin/VLC-debug.apk VLC-$VERSION.apk
 fi
+
+# cleanup build info
+git checkout vlc-android/res/values/
 
