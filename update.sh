@@ -86,7 +86,7 @@ cd $VLC/../
 # Clean previous apk
 make distclean
 
-./buildinfo.sh
+#./buildinfo.sh
 
 VLC_BUILD_DIR=vlc/android V=1 make
 
