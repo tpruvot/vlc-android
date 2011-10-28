@@ -584,6 +584,13 @@ public class VideoPlayerActivity extends Activity {
         if (path != null && path.length() > 0) {
             mLibVLC.readMedia(path);
             mWakeLock.acquire();
+            if (!mLibVLC.hasVideoTrack(path)) {
+                Log.i(TAG, "AUDIO FILE");
+                Intent main = new Intent(this, MainActivity.class);
+                //put this extra to show audio player
+                main.putExtra("from_audiofile", path);
+                startActivity(main);
+            }
         }
     }
 }

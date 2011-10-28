@@ -35,6 +35,7 @@ public class MainActivity extends TabActivity {
     private static final int VIDEO_TAB = 0;
     private static final int AUDIO_TAB = 1;
     public static final String START_FROM_NOTIFICATION = "from_notification";
+    public static final String START_FROM_AUDIOFILE = "from_audiofile";
     private static final String PREF_SHOW_INFO = "show_info";
 
     private VideoListActivity mVideoListActivity;
@@ -88,6 +89,12 @@ public class MainActivity extends TabActivity {
         if (getIntent().hasExtra(START_FROM_NOTIFICATION)) {
             Log.d(TAG, "Started from notification.");
             showAudioTab();
+        } else if (getIntent().hasExtra(START_FROM_AUDIOFILE)) {
+            String path = getIntent().getExtras().getString(START_FROM_AUDIOFILE);
+            //Media m = ....getMediaItem(path, 0);
+            //mAudioController.add(m);
+            showAudioTab();
+            showAudioPlayer();
         } else {
             // TODO: load the last tab-state
             showVideoTab();

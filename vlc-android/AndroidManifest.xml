@@ -52,6 +52,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="video/*" />
+                <data android:scheme="rtsp" />
+                <data android:mimeType="audio/*" android:scheme="file" />
             </intent-filter>
         </activity>
         <activity
@@ -62,13 +64,7 @@
             android:theme="@android:style/Theme.NoTitleBar"/>
         <activity
             android:name=".AudioPlayerActivity"
-            android:theme="@android:style/Theme.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="audio/*" android:scheme="file" />
-            </intent-filter>
-        </activity>
+            android:theme="@android:style/Theme.NoTitleBar"/>
         <service
             android:name=".AudioService"/>
         <activity
